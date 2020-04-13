@@ -2,9 +2,9 @@
 
 DNS 的核心系统是一个三层的树状、分布式服务，主要用于域名与 IP 地址的相互转换，基本对应域名的结构：
 
-- 根域名服务器（Root DNS Server）：管理顶级域名服务器，返回“com”“net”“cn”等顶级域名服务器的 IP 地址；
-- 顶级域名服务器（Top-level DNS Server）：管理各自域名下的权威域名服务器，比如 com 顶级域名服务器可以返回 github.com 域名服务器的 IP 地址；
-- 权威域名服务器（Authoritative DNS Server）：管理自己域名下主机的 IP 地址，比如 github.com 权威域名服务器可以返回 www.github.com 的 IP 地址。
+- **根域名服务器（Root DNS Server）**：管理顶级域名服务器，返回“com”“net”“cn”等顶级域名服务器的 IP 地址；
+- **顶级域名服务器（Top-level DNS Server）**：管理各自域名下的权威域名服务器，比如 com 顶级域名服务器可以返回 github.com 域名服务器的 IP 地址；
+- **权威域名服务器（Authoritative DNS Server）**：管理自己域名下主机的 IP 地址，比如 github.com 权威域名服务器可以返回 www.github.com 的 IP 地址。
 
 ## 缓存
 
