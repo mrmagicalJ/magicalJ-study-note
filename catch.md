@@ -31,3 +31,19 @@ Cache-Control: no-cache
 即使每次校验新鲜度，也不需要每次都从服务器下载资源: **如果浏览器/CDN上缓存经校验没有过期**。这被称为协商缓存，此时 http 状态码返回 304，指`Not Modified`，即没有变更。
 
 而对于协商缓存，也有它们自己的算法，协商缓存的背后基于响应头`Last-Modified/ETag`。浏览器每次请求资源时，会携带上次服务器响应的`ETag/Last-Modified`作为标志，与服务端此时的`ETag/Last-Modified`作比较，来判断内容更改。
+
+## 强制缓存
+
+### Expires
+
+Expires 是 HTTP1.0 提出的判断缓存过期的字段，返回的是绝对时间
+
+### Cache-Control
+
+HTTP1.1 提出的判断缓存过期的字段，返回的是相对时间
+
+## 协商缓存
+
+### Last-Modified / If-Modified-Since
+
+### Etag
