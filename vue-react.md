@@ -16,6 +16,22 @@ React的首要思想是通过组件（Component）来开发应用，基于组件
 - 给很多 DOM 元素添加事件可能会影响网页的性能，而在 JSX 中使用了事件委托（event dlegation）的方式处理，最后只在 DOM 树上添加了一个事件处理函数，挂在最顶层的 DOM 节点上，所有的事件都被这个事件处理函数捕获，然后根据具体组件分配给特定函数，性能要高
 - 对于绑定了事件的 DOM 元素，如果要动态地从 DOM 树中删掉的话，需要把对应的事件处理器注销。如果忘了注销，就可能造成内存泄露，这样的bug很难被发现。因为 React 控制了组件的生命周期，在 unmount 的时候自然能够清除相关的所有事件处理函数，内存泄露也不再是一个问题。
 
+### 直接修改 state 会怎么样
+
+React 改变状态必需要使用 setState，直接修改 state，state 的值是改变了，但是界面不会有任何变化，因为直接修改 state 不会驱动组件重新渲染，而 setState 所做的就是先更改 state，然后驱动组件更新
+
 ### 纯函数
 
 纯函数，指的是没有任何副作用，输出完全依赖于输入的函数，两次函数调用如果输入相同，得到的结果也绝对相同。
+
+### 生命周期
+
+1. 挂载（mount），第一次把组件在 DOM 树中渲染
+   1. constructor
+   2. getInitialState
+   3. getDefaultProps
+   4. componentWillMount
+   5. render
+   6. componentDidMount
+2. 更新（update），组件重新渲染
+3. 卸载（unmount），组件从 DOM 树中删除
