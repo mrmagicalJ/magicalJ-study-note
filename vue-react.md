@@ -26,6 +26,8 @@ React 改变状态必需要使用 setState，直接修改 state，state 的值�
 
 ### 生命周期
 
+#### 挂载过程
+
 1. 挂载（mount），第一次把组件在 DOM 树中渲染
    1. constructor
    2. getInitialState
@@ -35,3 +37,35 @@ React 改变状态必需要使用 setState，直接修改 state，state 的值�
    6. componentDidMount
 2. 更新（update），组件重新渲染
 3. 卸载（unmount），组件从 DOM 树中删除
+
+render 函数本身并不往 DOM 树上渲染内容，它只是返回一个 JSX 表示的对象，然后由 React 来根据返回对象决定如何渲染。而 React 肯定是要把所有组件返回的结果综合起来，才能知道该如何产生对应的 DOM 修改。所以，只有 React 调用所有组件的 render 函数之后，才有可能完成挂载，这时候才会依次调用各个组件的 componentDidMount 函数作为挂载过程的收尾。
+
+> componentDidMount 只在浏览器端执行
+
+#### 更新过程
+
+1. componentWillReactiveProps
+2. shouldComponentUpdate
+3. componentWillUpdate
+4. render
+5. componentDidUpdate
+
+##### componentWillReactiveProps
+
+只要父组件的 render 方法被调用，在 render 函数里面被渲染的子组件就会经历更新过程，不管父组件传给子组件的 props 有没有变化，都会触发子组件的 componentWillReactiveProps
+
+> 通过 this.setState 方法触发的更新过程不会调用这个函数，这是因为这个函数适合新的 props 值（也就是参数是 nextProps）来计算是不是要更新内部状态 state，如果 this.setState 的调用导致 componentWillReactiveProps，那就是一个死循环了
+
+##### shouldComponentUpdate
+
+render 和 shouldComponentUpdate 函数，也是 React 生命周期函数中唯二两个要求有返回结果的函数。render 函数的返回结果将用于构造 DOM 对象，而 shouldComponentUpdate 函数返回一个布尔值，告诉 React 这个组件在这次更新过程中是否要继续。
+
+通过 setState 引发的更新过程，并不是立刻更新组件的 state 值，在执行到到函数 shouldComponentUpdate 时，this.state 依然是 this.setState 执行前的值，所以我们要做的实际上就是在 nextProps、nextState、this.props 和 this. state 中互相比对。
+
+##### componentDidUpdate
+
+componentDidUpdate 可以在服务器端被执行，但在做服务器端渲染时，基本不会历更新过程，因为服务器端只需要产出 HTML 字符串，一个装载过程就足够产出 HTML 了，所以正常情况下服务器端不会调用 componentDidUpdate，如果调用了，说明我们的程序有错误，需要改进。
+
+#### 卸载过程
+
+**componentWillUnmount**：componentWillUnmount 中的工作往往和 componentDidMount 有关。比如，在 componentDidMount 中用非 React 的方法创造了一些 DOM 元素，如果撒手不管可能会造成内存泄露，那就需要在 componentWillUnmount 中把这些创造的DOM元素清理掉。
