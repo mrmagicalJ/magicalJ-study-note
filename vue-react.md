@@ -69,3 +69,13 @@ componentDidUpdate 可以在服务器端被执行，但在做服务器端渲染�
 #### 卸载过程
 
 **componentWillUnmount**：componentWillUnmount 中的工作往往和 componentDidMount 有关。比如，在 componentDidMount 中用非 React 的方法创造了一些 DOM 元素，如果撒手不管可能会造成内存泄露，那就需要在 componentWillUnmount 中把这些创造的DOM元素清理掉。
+
+### React 组件通信
+
+#### props校验
+
+自 React v15.5 起，React.PropTypes 已移入另一个包中。请使用 prop-types 库 代替。
+
+```javascript
+import PropTypes from "prop-types";
+```
