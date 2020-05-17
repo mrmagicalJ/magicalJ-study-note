@@ -78,3 +78,13 @@ componentDidUpdate 可以在服务器端被执行，但在做服务器端渲染�
 - Store
 - Action：
 - View
+
+### React 组件通信
+
+#### props校验
+
+自 React v15.5 起，React.PropTypes 已移入另一个包中。请使用 prop-types 库 代替。
+
+```javascript
+import PropTypes from "prop-types";
+```
