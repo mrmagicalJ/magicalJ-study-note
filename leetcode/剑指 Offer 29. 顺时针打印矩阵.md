@@ -7,23 +7,22 @@ var spiralOrder = function(matrix) {
   if (length === 0) return []
   const res = []
   while(length > 0) {
+    if (temp[0].length === 0) return res
     if (length === 1) {
-      res.concat(temp.pop())
+      res.push(...temp.pop())
     } else if (length === 2) {
-      res.concat(temp.splice(0, 1), temp.pop().reverse())
+      res.push(...temp.splice(0, 1)[0], ...temp.pop().reverse())
     } else {
-      console.log(temp)
-      const step1 = temp.splice(0,1)
+      const step1 = temp.splice(0,1)[0]
       const step2 = []
-      const step3 = temp.pop()
+      const step3 = temp.pop().reverse()
       const step4 = []
       temp.forEach(i => {
         step2.push(i.pop())
-        step4.unshift(i.splice(0,1))
+        if (i.length > 0) step4.unshift(i.splice(0,1)[0])
       })
       console.log(step1, step2, step3, step4)
-      res.concat(step1, step2, step3, step4)
-      console.log(res)
+      res.push(...step1, ...step2, ...step3, ...step4)
     }
     length -= 2
   }
