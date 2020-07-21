@@ -16,4 +16,20 @@ var twoSum = function(numbers, target) {
     }
   }
 };
+
+var twoSum = function(numbers, target) {
+  const { length } = numbers
+  let index1 = 0
+  let index2 = 1
+
+  const dic = {}
+  numbers.forEach((item, index) => {
+    dic[item] = index + 1
+  })
+
+  for(; index1 < length; index1++) {
+    index2 = dic[target - numbers[index1]]
+    if (index2 && index2 > index1 + 1) return [index1+1, index2]
+  }
+};
 ```
