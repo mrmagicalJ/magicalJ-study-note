@@ -12,22 +12,23 @@ var intersect = function(nums1, nums2) {
 
 ```javascript
 var intersect = function(nums1, nums2) {
-    let res= []
-    const m0 = {}
-    const { length } = nums1
-    for(let index = 0; index < length; index++) {
-      m0[nums1[index]] = 1
+  let res= []
+  const m0 = {}
+  const { length } = nums1
+  for(let index = 0; index < length; index++) {
+    const val = nums1[index]
+    m0[val] = m0[val] ? m0[val] + 1 : 1
+  }
+  let k = 0
+  const len = nums2.length
+  for(let index = 0; index < len; index++) {
+    const val = nums2[index]
+    if (m0[val]) {
+      res[k] = val
+      m0[val]--
+      k++
     }
-    let k = 0
-    const len = nums2.length
-    for(let index = 0; index < len; index++) {
-      const val = nums2[index]
-      if (m0[val]) {
-        res[index] = val
-        m0[val] = 0
-        k++
-      }
-    }
-    return res
+  }
+  return res
 };
 ```
