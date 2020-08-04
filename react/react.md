@@ -88,3 +88,12 @@ componentDidUpdate 可以在服务器端被执行，但在做服务器端渲染�
 ```javascript
 import PropTypes from "prop-types";
 ```
+
+## setState可能是异步的
+
+出于性能考虑，合并更新
+
+- 在**合成事件**和**声明周期**中是异步的
+- 在`setTimeout`中和**原生事件**中是同步的
+
+如何实现链式调用呢，使用函数，setState可以接受一个对象或者**一个函数**，参数是处理到当前步骤的state
