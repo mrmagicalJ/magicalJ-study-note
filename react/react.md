@@ -66,6 +66,27 @@ componentDidUpdate 可以在服务器端被执行，但在做服务器端渲染�
 
 **componentWillUnmount**：componentWillUnmount 中的工作往往和 componentDidMount 有关。比如，在 componentDidMount 中用非 React 的方法创造了一些 DOM 元素，如果撒手不管可能会造成内存泄露，那就需要在 componentWillUnmount 中把这些创造的DOM元素清理掉。
 
+### v17可能废弃的生命周期和引入的新的生命周期
+
+#### 废弃
+
+- componentWillMount
+- componentWillReceiveProps
+- componentWillUpdate
+
+#### 新引入
+
+- static getDerivedStateFromProps
+- getSnapshotBeforeUpdate
+
+#### 去掉警告
+
+使用即将废弃的生命周期会有警告，去掉警告需要加上前缀`UNSAFE_`，不想手动添加，可以使用如下命令(path 可以省略)
+
+```bash
+npx react-codemod rename-unsafe-lifecycles <path>
+```
+
 ## state和prop的局限
 
 父组件维护了一份自己的状态，子组件一样，重复的数据的带来的问题：如何保持一致？如果不一致，很难决定到底使用哪个
