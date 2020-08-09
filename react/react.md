@@ -118,3 +118,7 @@ import PropTypes from "prop-types";
 - 在`setTimeout`中和**原生事件**中是同步的
 
 如何实现链式调用呢，使用函数，setState可以接受一个对象或者**一个函数**，参数是处理到当前步骤的state
+
+## key值唯一
+
+diff的时候，首先比较type，然后比较key，所以同级同类型元素，key必须**唯一**
