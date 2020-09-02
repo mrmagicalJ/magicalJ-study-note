@@ -32,4 +32,4 @@ User mrmagicalJ
 - Host：主机名，你可以自定义名字
 - Hostname：真实主机地址，如果域名不好使可以使用ip
 - IdentityFile：对应私钥的位置
-User：用户名，提交会取这个名字
+- User：用户名，提交会取这个名字
