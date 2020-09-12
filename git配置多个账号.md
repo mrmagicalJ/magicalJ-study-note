@@ -3,7 +3,7 @@
 ## 生成不同的ssh-key
 
 ```bash
-ssh-keygent -t rsa -f ~/.ssh/id_rsa_company -C "your email"
+ssh-keygen -t rsa -f ~/.ssh/id_rsa_company -C "your email"
 ```
 
 ## 分别配置不同的ssh-keys
