@@ -1,0 +1,23 @@
+{
+  "name": "magicalj-study-note",
+  "version": "1.0.0",
+  "author": "mrmagicalJ",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrmagicalJ/magicalJ-study-note.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mrmagicalJ/magicalJ-study-note/issues"
+  },
+  "homepage": "https://github.com/mrmagicalJ/magicalJ-study-note#readme",
+  "devDependencies": {
+    "vuepress": "^1.7.1"
+  }
+}
