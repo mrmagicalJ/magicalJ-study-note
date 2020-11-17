@@ -21,3 +21,9 @@ npm run dev:mp-weixin
 4、使用微信小程序开发者工具导入项目
 
 项目地址为`your-project/dist/dev/mp-weixin`
+
+## 生命周期
+
+- 全局的APP中使用`onLaunch`表示启动
+- 页面中使用`onLoad`和`onShow`分别表示 页面加载完毕 和 页面显示
+- 组件中使用`mounted`表示组件挂载完成
