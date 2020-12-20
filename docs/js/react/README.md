@@ -140,6 +140,8 @@ import PropTypes from "prop-types";
 
 ## setState可能是异步的
 
+setStste是伪异步，通过 isBatchingUpdates 控制，在 React 生命周期中或者合成事件中，可以得到 isBatchingUpdates，将状态放进队列，控制执行节奏，而在原生事件中（addEventListener、setTimeout、setInterval等）无法得到，为同步 isBatchingUpdates，
+
 出于性能考虑，合并更新
 
 - 在**合成事件**和**声明周期**中是异步的
@@ -159,3 +161,26 @@ import PropTypes from "prop-types";
 ## key值唯一
 
 diff的时候，首先比较type，然后比较key，所以同级同类型元素，key必须**唯一**
+
+## 如何设计 React 组件
+
+- 展示组件（专注于组件本身特性）
+  - 代理组件
+  - 样式组件
+  - 布局组件
+- 灵巧组件（面向业务，功能更丰富，复杂性高，复用性低）
+  - 容器组件（几乎没有复用性，主要作用**拉取数据**与**组合组件**）
+  - 高阶组件
+    - 逻辑服用
+    - 链式调用（从外向内，从上向下）
+    - 渲染劫持（通过控制 render 函数修改输出内容，常见的是loading）
+    - 缺陷
+      - 丢失静态函数，可以使用社区解决方案`hoist-non-react-statics`
+      - refs属性不能透传，可以使用`React.forwardRef`api解决
+
+src
+├───── components
+│  ├── basic 最基本的展示组件 建议使用类似`Storybook`的工具进行组件管理
+│  ├── hoc 高阶组件
+│  ├── container 容器组件
+└───── pages 页面外层组件
