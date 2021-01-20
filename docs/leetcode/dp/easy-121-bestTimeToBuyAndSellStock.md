@@ -28,22 +28,18 @@ var maxProfit = function(prices) {
   // 边界处理
   if ( length < 1) return 0
 
-  let max = 0
-  let min = prices[0]
-  let earn = 0
-  let i = 1
-  for(; i < length; i++) {
-    earn = prices[i] - min
-    if (earn < 0) {
-      min = prices[i]
-    } else {
-      max = Math.max(max, earn)
-    }
-  }
-  return max
+  const dp = [[0, -prices[0]]]
+  
 };
 ```
 
 思路：
 
-每一天只有两种选择：买或者不买
+每一天只有两种选择：买或者不买，相应每种情况的前一天也是两种，所以总共有四种情况：
+
+- 今天不持有
+  - 前一天持有，今天卖出
+  - 前一天不持有，今天继续不持有
+- 今天持有
+  - 前一天持有，今天继续持有
+  - 前一天不持有，今天买入
