@@ -49,3 +49,13 @@ export function initState (vm: Component) {
 ### 9. `callHook(vm, 'created')`：触发 created 钩子
 
 触发 created 钩子
+
+## vue3架构
+
+vue
+
+- compiler-dom
+  - compiler-core
+- reactivity
+- runtime-dom
+  - runtime-core
