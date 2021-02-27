@@ -91,6 +91,8 @@ module.exports = {
           children: [
             '',
             'dns',
+            'http-version',
+            'network-layer',
             'message',
             'request-method',
             'catch-control',
