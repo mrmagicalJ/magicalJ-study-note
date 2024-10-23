@@ -126,4 +126,4 @@ function run(gen) {
 run(getDataByGenerator)
 ```
 
-这样，我们就可以把异步操作封装到`Generator`函数内部，使用`run`方法作为`Generator`函数的自执行器，来处理异步。其实我们不难发现，`async/await`方法相比于`Generator`处理异步的方式，有很多相似的地方，只不过`async/await`在语义化方面更加明显，同时`async/await`不需要我们手写执行器，其内部已经帮我们封装好了，这就是为什么说`async/await`是`Generator`函数处理异步的语法糖了。
+这样，我们就可以把异步操作封装到`Generator`函数内部，使用`run`方法作为`Generator`函数的自执行器，来处理异步。其实我们不难发现，`async/await`方法相比于`Generator`处理异步的方式，有很多相似的地方，只不过`async/await`在语义化方面更加明显，同时`async/await`不需要我们手写执行器，其内部已经帮我们封装好了，这就是为什么说`async/await`可以看做是`Generator`函数处理异步的语法糖了。
